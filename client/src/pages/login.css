@@ -1,0 +1,75 @@
+header.login_header {
+    position: absolute;
+    z-index: -1;
+}
+
+header.login_header > img {
+    width: clamp(9.375rem, 50vw, 18.75rem);
+    height: clamp(9.375rem, 30vh, 18.75rem);
+}
+
+form.login_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+form.login_form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+    height: 80%;
+    padding: 16px;
+    
+    background-color: #EFEBDF50;
+    box-shadow: 0 0 1rem #00000030;
+
+    border-radius: .75rem;
+}
+
+form.login_form > div > h1 {
+    position: relative;
+
+    &::after {
+        content: "";
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        height: .0625rem;
+        width: 100%;
+
+        background-color: black;
+    }
+}
+
+form.login_form > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form.login_form > div > button {
+    width: 100%;
+    padding: 1.5rem;
+
+    background-color: var(--transparent);
+    font-size: 24px;
+
+    background-image: url("../assets/login-btn.svg");
+    background-size: 70%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

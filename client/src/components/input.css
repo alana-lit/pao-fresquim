@@ -1,0 +1,57 @@
+div.input_container {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    box-shadow: 0 0 1rem var(--grey);
+
+    width: 32.25rem;
+    height: 4.5625rem;
+
+    border-radius: 16px;
+}
+
+div.input_container > label.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--grey);
+    border-radius: 16px 0 0 16px;
+    
+    height: 100%;
+    padding: 20px;
+
+    & > svg {
+        color: #00000050;
+
+        height: 1.875rem;
+        width: 1.875rem;
+    }
+}
+
+div.input_container > label.placeholder {
+    position: absolute;
+    top: 26.5px;
+    left: calc(65px + 20px);
+
+    color: #00000050;
+
+    transition: .6s ease-in-out;
+}
+
+div.input_container > input {
+    width: calc(100% - 1.875rem);
+    height: 100%;
+    
+    padding: 0 1rem;
+    outline: none;
+
+    background-color: transparent;
+}
+
+div.input_container > input:focus + label.placeholder,
+div.input_container > label.placeholder.active {
+    top: -0px;
+    left: 75px;
+}
