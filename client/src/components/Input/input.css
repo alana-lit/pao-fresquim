@@ -5,7 +5,7 @@ div.input_container {
 
     box-shadow: 0 0 1rem var(--grey);
 
-    width: 32.25rem;
+    width: clamp(10rem, 70vw, 32.25rem);
     height: 4.5625rem;
 
     border-radius: 16px;
@@ -23,17 +23,21 @@ div.input_container > label.icon {
     padding: 20px;
 
     & > svg {
+        height: clamp(1rem, 4vw, 1.875rem);
+        width: clamp(1rem, 4vw, 1.875rem);
+        
         color: #00000050;
-
-        height: 1.875rem;
-        width: 1.875rem;
     }
 }
 
 div.input_container > label.placeholder {
     position: absolute;
     top: 26.5px;
-    left: calc(65px + 20px);
+    left: clamp(
+        75px,
+        15vw,
+        85px
+    );
 
     color: #00000050;
 
