@@ -1,5 +1,5 @@
-import logo from "../assets/logo-pao-fresquim.svg"
-import { Input } from "../components/Input/Input"
+import logo from "../../assets/logo-pao-fresquim.svg"
+import { Input } from "../../components/Input/Input"
 import { FaAddressCard } from "react-icons/fa"
 import { RiLockPasswordLine } from "react-icons/ri"
 
