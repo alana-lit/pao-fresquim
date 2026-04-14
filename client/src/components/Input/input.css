@@ -5,7 +5,7 @@ div.input_container {
 
     box-shadow: 0 0 1rem var(--grey);
 
-    width: clamp(10rem, 70vw, 32.25rem);
+    width: clamp(10rem, 90vw, 32.25rem);
     height: 4.5625rem;
 
     border-radius: 16px;
