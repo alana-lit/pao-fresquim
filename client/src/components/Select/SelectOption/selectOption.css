@@ -1,0 +1,28 @@
+li.li_option {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+
+    border-radius: 8px;
+    background-color: none;
+
+    height: 2.5rem;
+    width: 100%;
+
+    cursor: pointer;
+    list-style-type: none;
+
+    transition: .3s ease-in-out;
+
+    & > span {
+        color: var(--black);
+    }
+
+    &:hover {
+        background-color: var(--primary-color);
+
+        & > span {
+            color: var(--white);
+        }
+    }
+}

@@ -58,3 +58,7 @@
       background-clip: content-box;
   }
 }
+
+html {
+  overflow: hidden;
+}
