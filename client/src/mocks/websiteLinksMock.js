@@ -8,17 +8,17 @@ export const websiteLinks = [
     {
         'ItemIcon': IoHome,
         'linkRef': 'Início',
-        'redirectTo': '/'
+        'redirectTo': '/home'
     },
     {
         'ItemIcon': FaBarcode,
         'linkRef': 'Cadastro de produtos',
-        'redirectTo': '/'
+        'redirectTo': '/products'
     },
     {
         'ItemIcon': GrUserWorker,
         'linkRef': 'Gerenciar funcionários',
-        'redirectTo': '/'
+        'redirectTo': '/employees'
     },
     {
         'ItemIcon': FaAddressCard,

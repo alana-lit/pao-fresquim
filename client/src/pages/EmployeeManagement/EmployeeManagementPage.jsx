@@ -1,15 +1,43 @@
+import { IoIosAddCircle, IoIosAddCircleOutline } from "react-icons/io"
+import { IoPersonRemoveSharp } from "react-icons/io5"
+
 import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
 import { AddEmployeeModal } from "../../components/Modals/AddEmployeeModal/AddEmployeeModal"
 import { SideBar } from "../../components/SideBar/SideBar"
 
+import './employeeManagementPage.css'
+import { employeeMock } from "../../mocks/employeeMock"
+import { EmployeeCard } from "./EmployeeCard/EmployeeCard"
+
 export const EmployeeManagementPage = () => {
     return (
         <>
-            <div>
+            <div className="container">
                 <SideBar />
-                <ModalContainer modalTitle="Cadastrar funcionário">
-                    <AddEmployeeModal />
-                </ModalContainer>
+                <section>
+                    <h1 className="font_poppins_regular">Gestão de funcionários</h1>
+                    <div className="employee_overview">
+                        <div className="departments_info">
+                            <p className="font_poppins_regular">Total de Funcionários: <span>X</span></p>
+                            <p className="font_poppins_regular">Quantidade de funcionários por setor:</p>
+                            <ul className="scrollbar">
+                                <li className="font_inter_semibold round">Padaria: 2</li>
+                                <li className="font_inter_semibold round">Caixa: 3</li>
+                            </ul>
+                        </div>
+                        <div className="employee_options">
+                            <button className="font_inter_semibold">
+                                <IoIosAddCircleOutline /> Adicionar funcionário
+                            </button>
+                            <button className="font_inter_semibold">
+                                <IoPersonRemoveSharp /> Remover funcionário
+                            </button>
+                        </div>
+                    </div>
+                    <ul className="employee_info_list scrollbar">
+                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} key={idx} />)}
+                    </ul>
+                </section>
             </div>
         </>
     )
