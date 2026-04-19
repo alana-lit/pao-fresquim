@@ -1,11 +1,8 @@
-import { LoginPage } from './pages/LoginPage/LoginPage'
-import { HomePage } from './pages/HomePage/HomePage'
-import { AddProductPage } from './pages/AddProductPage/AddProductPage'
-import { EmployeeManagementPage } from './pages/EmployeeManagement/EmployeeManagementPage'
+import { RoutesMain } from './routes/PublicRoutes/RoutesMain'
 
 function App() {
   return (
-    <EmployeeManagementPage />
+    <RoutesMain />
   )
 }
 

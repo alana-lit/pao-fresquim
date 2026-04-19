@@ -14,7 +14,7 @@ export const AddEmployeeModal = () => {
         <form className='employee_modal'>
             <Input id="emp_name" placeholder="Nome do Funcionário" inputType="text" hasIconAside={true} LabelIcon={GrUserWorker} />
             <Input id="contact" placeholder="Contato" inputType="number" hasIconAside={true} LabelIcon={MdLocalPhone} />
-            <Select LabelIcon={IoMdArrowDropdown} defaultValue="Cargo" optionsList={[{'optionLabel': 'BLABLA', 'optionValue': 'LELE'}, {'optionLabel': 'BLABLA2', 'optionValue': 'LELE2'}]} acceptsDefault={false}/>
+            <Select LabelIcon={IoMdArrowDropdown} defaultValue="Cargo" optionsList={[]} acceptsDefault={false}/>
             <Input id="address" placeholder="Endereço" inputType="text" hasIconAside={true} LabelIcon={FaHouse} />
             <Input id="emergContact" placeholder="Contato de Emergência" inputType="number" hasIconAside={true} LabelIcon={IoWarning} />
             <button className='font_inter_semibold'>
