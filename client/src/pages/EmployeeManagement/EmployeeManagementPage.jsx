@@ -1,15 +1,20 @@
 import { IoIosAddCircle, IoIosAddCircleOutline } from "react-icons/io"
 import { IoPersonRemoveSharp } from "react-icons/io5"
 
-import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
 import { AddEmployeeModal } from "../../components/Modals/AddEmployeeModal/AddEmployeeModal"
+import { EmployeeCard } from "./EmployeeCard/EmployeeCard"
+import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
 import { SideBar } from "../../components/SideBar/SideBar"
 
-import './employeeManagementPage.css'
 import { employeeMock } from "../../mocks/employeeMock"
-import { EmployeeCard } from "./EmployeeCard/EmployeeCard"
+import { useState } from "react"
+
+import './employeeManagementPage.css'
 
 export const EmployeeManagementPage = () => {
+    const [addEmployeeActive, setAddEmployee] = useState(false)
+    const toggleState = (state, stateFn) => stateFn(!state)
+
     return (
         <>
             <div className="container">
@@ -26,7 +31,7 @@ export const EmployeeManagementPage = () => {
                             </ul>
                         </div>
                         <div className="employee_options">
-                            <button className="font_inter_semibold">
+                            <button className="font_inter_semibold" onClick={_ => toggleState(addEmployeeActive, setAddEmployee)}>
                                 <IoIosAddCircleOutline /> Adicionar funcionário
                             </button>
                             <button className="font_inter_semibold">
@@ -39,6 +44,11 @@ export const EmployeeManagementPage = () => {
                     </ul>
                 </section>
             </div>
+            { addEmployeeActive ?
+                <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeState={addEmployeeActive} closeSet={setAddEmployee}>
+                    <AddEmployeeModal />
+                </ModalContainer> : null
+            }
         </>
     )
 }
