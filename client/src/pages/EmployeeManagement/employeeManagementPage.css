@@ -16,8 +16,9 @@ div.container > section {
         100% - 20%
     );
 
-    padding: 0 5rem;
-    gap: 1rem;
+    padding-block: 0;
+    padding-inline: clamp(1rem, 5vw, 5rem);
+    gap: 2rem;
 
     @media screen and (width <= 700px) {
         width: 100%;
