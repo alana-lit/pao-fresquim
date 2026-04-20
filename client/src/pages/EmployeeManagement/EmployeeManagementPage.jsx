@@ -14,9 +14,11 @@ import './employeeManagementPage.css'
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
     const [isModalClosing, setModalClosing] = useState(false)
+    const [isDeletingEmployees, setDeletingEmployees] = useState(false)
 
-    const toggleState = (stateToSet, stateFn) => {
-        if(!stateToSet) {
+    const toggleState = (stateToSet, stateFn, hasCloseEffect) => {
+        const useCloseEffect = hasCloseEffect || false // This is necessary because if not 
+        if(useCloseEffect && !stateToSet) {
             setModalClosing(true)
             setTimeout(() => {
                 setModalClosing(false)
@@ -47,13 +49,13 @@ export const EmployeeManagementPage = () => {
                             <button className="font_inter_semibold" onClick={_ => toggleState(true, setAddEmployee)}>
                                 <IoIosAddCircleOutline /> Adicionar funcionário
                             </button>
-                            <button className="font_inter_semibold">
-                                <IoPersonRemoveSharp /> Remover funcionário
+                            <button className="font_inter_semibold" onClick={_ => toggleState(!isDeletingEmployees, setDeletingEmployees)}>
+                                {!isDeletingEmployees ? <><IoPersonRemoveSharp /> Remover funcionário</> : "Cancelar"}
                             </button>
                         </div>
                     </div>
                     <ul className="employee_info_list scrollbar">
-                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} key={idx} />)}
+                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} />)}
                     </ul>
                 </section>
             </div>
