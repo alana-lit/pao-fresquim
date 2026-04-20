@@ -13,7 +13,20 @@ import './employeeManagementPage.css'
 
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
-    const toggleState = (state, stateFn) => stateFn(!state)
+    const [isModalClosing, setModalClosing] = useState(false)
+
+    const toggleState = (stateToSet, stateFn) => {
+        if(!stateToSet) {
+            setModalClosing(true)
+            setTimeout(() => {
+                setModalClosing(false)
+                stateFn(stateToSet)
+            }, 750)
+            return
+        }
+
+        stateFn(stateToSet)
+    }
 
     return (
         <>
@@ -31,7 +44,7 @@ export const EmployeeManagementPage = () => {
                             </ul>
                         </div>
                         <div className="employee_options">
-                            <button className="font_inter_semibold" onClick={_ => toggleState(addEmployeeActive, setAddEmployee)}>
+                            <button className="font_inter_semibold" onClick={_ => toggleState(true, setAddEmployee)}>
                                 <IoIosAddCircleOutline /> Adicionar funcionário
                             </button>
                             <button className="font_inter_semibold">
@@ -45,7 +58,7 @@ export const EmployeeManagementPage = () => {
                 </section>
             </div>
             { addEmployeeActive ?
-                <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeState={addEmployeeActive} closeSet={setAddEmployee}>
+                <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing}>
                     <AddEmployeeModal />
                 </ModalContainer> : null
             }
