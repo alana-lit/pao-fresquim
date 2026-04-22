@@ -1,8 +1,8 @@
-import './App.css'
+import { RoutesMain } from './routes/PublicRoutes/RoutesMain'
 
 function App() {
   return (
-    <></>
+    <RoutesMain />
   )
 }
 
