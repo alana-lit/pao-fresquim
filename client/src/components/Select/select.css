@@ -1,0 +1,74 @@
+div.select_container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    box-shadow: 0 0 1rem var(--grey);
+    
+    width: clamp(10rem, 90vw, 32.25rem);
+    height: 4.5625rem;
+    
+    border-radius: 16px;
+
+    cursor: pointer;
+}
+
+div.select_container > .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--grey);
+    border-radius: 16px 0 0 16px;
+    
+    height: 100%;
+    padding: 20px;
+
+    & > svg {
+        height: clamp(1rem, 4vw, 1.875rem);
+        width: clamp(1rem, 4vw, 1.875rem);
+        
+        color: #00000050;
+    }
+}
+
+div.select_container > div.selected_option {
+    color: #00000050;
+    padding-left: 16px;
+
+    & > input {
+        display: none;
+    }
+}
+
+div.select_container > ul.drop_options {
+    display: none;
+
+    position: absolute;
+    bottom: -90px;
+    left: calc(
+        clamp(1rem, 4vw, 1.875rem) + 40px
+    );
+
+    width: calc(
+        100% - clamp(1rem, 4vw, 1.875rem) - 40px
+    );
+
+    background-color: var(--white);
+    border-radius: 8px;
+    backdrop-filter: blur(12px);
+
+    max-height: 12.5rem;
+    height: max-content;
+    overflow-y: auto;
+
+    &.show {
+        display: flex;
+        flex-direction: column;
+        gap: .2rem;
+
+        z-index: 1;
+
+        box-shadow: 0 0 22px #00000070;
+    }
+}
