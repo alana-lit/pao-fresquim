@@ -1,4 +1,4 @@
 package br.com.paofresquim.model;
 
-public class Usuario {
+public class RegistroPonto {
 }
