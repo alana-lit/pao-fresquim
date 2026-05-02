@@ -11,6 +11,7 @@ import { useState } from "react"
 
 import './employeeManagementPage.css'
 import { EmployeeCheckinModal } from "../../components/Modals/EmployeeCheckinsModal/EmployeeCheckinModal"
+import { EmployeeLicensesModal } from "../../components/Modals/EmployeeLicensesModal/EmployeeLicensesModal"
 
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
@@ -58,7 +59,7 @@ export const EmployeeManagementPage = () => {
                         </div>
                     </div>
                     <ul className="employee_info_list scrollbar">
-                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} />)}
+                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} />)}
                     </ul>
                 </section>
             </div>
@@ -70,7 +71,7 @@ export const EmployeeManagementPage = () => {
             {
                 seeLicense ? 
                 <ModalContainer modalTitle="Licenças e atestados" closeFn={toggleState} closeSet={setSeeLicense} isClosing={isModalClosing} >
-                    <></>
+                    <EmployeeLicensesModal employeeId={seeLicense} />
                 </ModalContainer> : null
             }
             {

@@ -2,7 +2,7 @@ import { CiCircleRemove } from 'react-icons/ci'
 
 import './employeeCard.css'
 
-export const EmployeeCard = ({ employeeInfo, isDeletingEmployees, setCheckins, openFn }) => {
+export const EmployeeCard = ({ employeeInfo, isDeletingEmployees, setCheckins, openFn, setLicenses }) => {
     return (
         <li className="card_container">
             <div className={`deleting_on animate__animated animate__fadeIn animate__faster ${isDeletingEmployees ? 'active' : ''}`}>
@@ -16,7 +16,7 @@ export const EmployeeCard = ({ employeeInfo, isDeletingEmployees, setCheckins, o
                 <p className="font_inter_regular">Contato de emergência: {employeeInfo.emergencyContact}</p>
             </div>
             <div className="options_container">
-                <button className="round">Atestados e Licenças</button>
+                <button className="round" onClick={(_) => openFn(employeeInfo.id, setLicenses, true)}>Atestados e Licenças</button>
                 <button className="round" onClick={(_) => openFn(employeeInfo.id, setCheckins, true)}>Histórico de Pontos</button>
                 <button className="round">Atualizar Informações</button>
             </div>
