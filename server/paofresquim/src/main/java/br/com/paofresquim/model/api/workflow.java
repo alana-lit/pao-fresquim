@@ -1,4 +1,4 @@
-package br.com.paofresquim.model;
+package br.com.paofresquim.model.api;
 import java.io.*;
 import java. net.*;
 
