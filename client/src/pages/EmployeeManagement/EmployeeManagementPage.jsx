@@ -21,7 +21,7 @@ export const EmployeeManagementPage = () => {
     const [seeLicense, setSeeLicense] = useState(false)
     const [seeLogs, setSeeLogs] = useState(null)
     const [updateEmployee, setUpdateEmployee] = useState(false)
-    const [selectedEmployee, setSelectedEmployee] = useState(null)
+    const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
     const selectedEmployee = employeeMock.find(employee => employee.id === selectedEmployeeId)
     
 
@@ -64,7 +64,7 @@ export const EmployeeManagementPage = () => {
                         </div>
                     </div>
                     <ul className="employee_info_list scrollbar">
-                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} setUpdateEmployee={setUpdateEmployee} setSelectedEmployee={setSelectedEmployee}/>)}
+                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} setUpdateEmployee={setUpdateEmployee} setSelectedEmployeeId={setSelectedEmployeeId}/>)}
                     </ul>
                 </section>
             </div>
