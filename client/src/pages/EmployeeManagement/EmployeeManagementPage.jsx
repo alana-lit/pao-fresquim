@@ -3,6 +3,7 @@ import { IoPersonRemoveSharp } from "react-icons/io5"
 
 import { AddEmployeeModal } from "../../components/Modals/AddEmployeeModal/AddEmployeeModal"
 import { EmployeeCard } from "./EmployeeCard/EmployeeCard"
+import { UpdateEmployeeModal } from "../../components/Modals/UpdateEmployeeModal/UpdateEmployeeModal"
 import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
 import { SideBar } from "../../components/SideBar/SideBar"
 
@@ -19,6 +20,8 @@ export const EmployeeManagementPage = () => {
     const [isDeletingEmployees, setDeletingEmployees] = useState(false)
     const [seeLicense, setSeeLicense] = useState(false)
     const [seeLogs, setSeeLogs] = useState(null)
+    const [updateEmployee, setUpdateEmployee] = useState(false)
+    const [selectedEmployee, setSelectedEmployee] = useState(null)
 
     const toggleState = (stateToSet, stateFn, hasCloseEffect) => {
         const useCloseEffect = hasCloseEffect || false // This is necessary because if not (i left it unfinished and now idk why it is necessary HAAHAHHAHAHAHH)
@@ -59,13 +62,18 @@ export const EmployeeManagementPage = () => {
                         </div>
                     </div>
                     <ul className="employee_info_list scrollbar">
-                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} />)}
+                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} setUpdateEmployee={setUpdateEmployee} setSelectedEmployee={setSelectedEmployee}/>)}
                     </ul>
                 </section>
             </div>
             { addEmployeeActive ?
                 <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing}>
                     <AddEmployeeModal />
+                </ModalContainer> : null
+            }
+             { updateEmployee ?
+                <ModalContainer modalTitle="Atualizar informações de (-)" closeFn={toggleState} closeSet={setUpdateEmployee} isClosing={isModalClosing}>
+                    <UpdateEmployeeModal employee={selectedEmployee}/>
                 </ModalContainer> : null
             }
             {

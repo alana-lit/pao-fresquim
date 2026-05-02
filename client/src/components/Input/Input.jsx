@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import './input.css'
 
-export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside }) => {
-    const [dirty, setDirty] = useState(false);
+export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside, defaultValue }) => {
+    const [dirty, setDirty] = useState(defaultValue?.length > 0);
 
     const handleInputEvent = (e) => {
         if(inputType != 'number') { // If the input is not a number, do nothing but set dirty to true or false.
@@ -39,7 +39,7 @@ export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside }) =
                     <LabelIcon />
                 </label> : null
             }
-            <input onInput={(e) => handleInputEvent(e)} type={inputType != 'number' ? inputType : 'text'} id={id} />
+            <input onInput={(e) => handleInputEvent(e)} type={inputType != 'number' ? inputType : 'text'} id={id} defaultValue={defaultValue || ''} />
             <label htmlFor={id} className={`placeholder font_inter_semibold ${dirty ? "active" : ""}`}>{placeholder}</label>
         </div>
     )
