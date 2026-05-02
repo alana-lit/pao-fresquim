@@ -22,6 +22,8 @@ export const EmployeeManagementPage = () => {
     const [seeLogs, setSeeLogs] = useState(null)
     const [updateEmployee, setUpdateEmployee] = useState(false)
     const [selectedEmployee, setSelectedEmployee] = useState(null)
+    const selectedEmployee = employeeMock.find(employee => employee.id === selectedEmployeeId)
+    
 
     const toggleState = (stateToSet, stateFn, hasCloseEffect) => {
         const useCloseEffect = hasCloseEffect || false // This is necessary because if not (i left it unfinished and now idk why it is necessary HAAHAHHAHAHAHH)

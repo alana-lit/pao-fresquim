@@ -18,8 +18,7 @@ export const EmployeeCard = ({ employeeInfo, isDeletingEmployees, setCheckins, o
             <div className="options_container">
                 <button className="round" onClick={(_) => openFn(employeeInfo.id, setLicenses, true)}>Atestados e Licenças</button>
                 <button className="round" onClick={(_) => openFn(employeeInfo.id, setCheckins, true)}>Histórico de Pontos</button>
-                <button className="round" onClick={(_) => {setSelectedEmployee(employeeInfo)
-                openFn(true, setUpdateEmployee, true) }}>Atualizar Informações</button>
+               <button onClick={() => openFn(employeeInfo.id, setSelectedEmployeeId, true)}> Atualizar Informações</button>
             </div>
         </li>
     )
