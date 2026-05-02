@@ -10,14 +10,17 @@ import { employeeMock } from "../../mocks/employeeMock"
 import { useState } from "react"
 
 import './employeeManagementPage.css'
+import { EmployeeCheckinModal } from "../../components/Modals/EmployeeCheckinsModal/EmployeeCheckinModal"
 
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
     const [isModalClosing, setModalClosing] = useState(false)
     const [isDeletingEmployees, setDeletingEmployees] = useState(false)
+    const [seeLicense, setSeeLicense] = useState(false)
+    const [seeLogs, setSeeLogs] = useState(null)
 
     const toggleState = (stateToSet, stateFn, hasCloseEffect) => {
-        const useCloseEffect = hasCloseEffect || false // This is necessary because if not 
+        const useCloseEffect = hasCloseEffect || false // This is necessary because if not (i left it unfinished and now idk why it is necessary HAAHAHHAHAHAHH)
         if(useCloseEffect && !stateToSet) {
             setModalClosing(true)
             setTimeout(() => {
@@ -55,13 +58,25 @@ export const EmployeeManagementPage = () => {
                         </div>
                     </div>
                     <ul className="employee_info_list scrollbar">
-                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} />)}
+                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} />)}
                     </ul>
                 </section>
             </div>
             { addEmployeeActive ?
                 <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing}>
                     <AddEmployeeModal />
+                </ModalContainer> : null
+            }
+            {
+                seeLicense ? 
+                <ModalContainer modalTitle="Licenças e atestados" closeFn={toggleState} closeSet={setSeeLicense} isClosing={isModalClosing} >
+                    <></>
+                </ModalContainer> : null
+            }
+            {
+                seeLogs != null ?
+                <ModalContainer modalTitle="Histórico de pontos" closeFn={toggleState} closeSet={setSeeLogs} isClosing={isModalClosing} >
+                    <EmployeeCheckinModal employeeId={seeLogs} />
                 </ModalContainer> : null
             }
         </>

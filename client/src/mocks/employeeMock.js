@@ -1,5 +1,6 @@
 export const employeeMock = [
     {
+        'id': crypto.randomUUID(),
         'name': 'Jao',
         'contractDuration': 10, // (years)
         'address': 'Rua das britas, nº 67, Jardim dos doidos',
@@ -7,6 +8,7 @@ export const employeeMock = [
         'emergencyContact': '(88) 88888-8888'
     },
     {
+        'id': crypto.randomUUID(),
         'name': 'Bruno',
         'contractDuration': 10, // (years)
         'address': 'Rua das britas, nº 67, Jardim dos doidos',
@@ -14,6 +16,7 @@ export const employeeMock = [
         'emergencyContact': '(55) 55555-5555'
     },
     {
+        'id': crypto.randomUUID(),
         'name': 'Alana',
         'contractDuration': 10, // (years)
         'address': 'Manicômio, nº 67, Doidolândia do Norte',
@@ -21,6 +24,7 @@ export const employeeMock = [
         'emergencyContact': '(33) 33333-3333'
     },
     {
+        'id': crypto.randomUUID(),
         'name': 'Allysson',
         'contractDuration': 10, // (years)
         'address': 'Manicômio, nº 67, Doidolândia do Leste',
@@ -28,6 +32,7 @@ export const employeeMock = [
         'emergencyContact': '(11) 11111-1111'
     },
     {
+        'id': crypto.randomUUID(),
         'name': 'Wendell',
         'contractDuration': 50, // (years)
         'address': 'Coca-cola',
