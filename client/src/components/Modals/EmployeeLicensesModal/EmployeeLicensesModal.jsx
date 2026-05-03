@@ -1,16 +1,19 @@
+import { useState } from 'react'
 import { employeeLicensesMock } from '../../../mocks/employeeLicensesMock'
 
 import './employeeLicensesModal.css'
 import { LicenseCard } from './LicenseCard/LicenseCard'
 
 export const EmployeeLicensesModal = ({ employeeId, addingLicense, openFn }) => {
+    const [deletingLicense, setDeletingLicense] = useState(false)
+
     return (
         <div className="employee__licenses--container">
             <ul className='scrollbar'>
-                {employeeLicensesMock.map((info, idx) => <LicenseCard info={info} key={idx}/>)}
+                {employeeLicensesMock.map((info, idx) => <LicenseCard info={info} isDeletingLicense={deletingLicense} key={idx} />)}
             </ul>
             <button className='font_inter_semibold brown' onClick={(_) => openFn(true, addingLicense, false)}>Adicionar atestado</button>
-            <button className='font_inter_semibold red'>Excluir atestado</button>
+            <button className='font_inter_semibold red' onClick={(_) => setDeletingLicense(!deletingLicense)}>{!deletingLicense ? "Excluir atestado" : "Cancelar"}</button>
         </div>
     )
 }

@@ -67,7 +67,7 @@ export const EmployeeManagementPage = () => {
                 </section>
             </div>
             { addEmployeeActive ?
-                <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing}>
+                <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing} confirmBeforeClose={true}>
                     <AddEmployeeModal />
                 </ModalContainer> : null
             }
