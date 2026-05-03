@@ -2,22 +2,25 @@ import { IoIosAddCircle, IoIosAddCircleOutline } from "react-icons/io"
 import { IoPersonRemoveSharp } from "react-icons/io5"
 
 import { AddEmployeeModal } from "../../components/Modals/AddEmployeeModal/AddEmployeeModal"
-import { EmployeeCard } from "./EmployeeCard/EmployeeCard"
 import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
+import { EmployeeCheckinModal } from "../../components/Modals/EmployeeCheckinsModal/EmployeeCheckinModal"
+import { EmployeeLicensesModal } from "../../components/Modals/EmployeeLicensesModal/EmployeeLicensesModal"
+
 import { SideBar } from "../../components/SideBar/SideBar"
+import { EmployeeCard } from "./EmployeeCard/EmployeeCard"
 
 import { employeeMock } from "../../mocks/employeeMock"
 import { useState } from "react"
 
 import './employeeManagementPage.css'
-import { EmployeeCheckinModal } from "../../components/Modals/EmployeeCheckinsModal/EmployeeCheckinModal"
-import { EmployeeLicensesModal } from "../../components/Modals/EmployeeLicensesModal/EmployeeLicensesModal"
+import { EmployeeAddLicenseModal } from "../../components/Modals/EmployeeAddLicenseModal/EmployeeAddLicenseModal"
 
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
     const [isModalClosing, setModalClosing] = useState(false)
     const [isDeletingEmployees, setDeletingEmployees] = useState(false)
-    const [seeLicense, setSeeLicense] = useState(false)
+    const [seeLicense, setSeeLicense] = useState(null)
+    const [addingLicense, setAddingLicense] = useState(false)
     const [seeLogs, setSeeLogs] = useState(null)
 
     const toggleState = (stateToSet, stateFn, hasCloseEffect) => {
@@ -69,15 +72,21 @@ export const EmployeeManagementPage = () => {
                 </ModalContainer> : null
             }
             {
-                seeLicense ? 
+                seeLicense != null ?
                 <ModalContainer modalTitle="Licenças e atestados" closeFn={toggleState} closeSet={setSeeLicense} isClosing={isModalClosing} >
-                    <EmployeeLicensesModal employeeId={seeLicense} />
+                    <EmployeeLicensesModal employeeId={seeLicense} addingLicense={setAddingLicense} openFn={toggleState} />
                 </ModalContainer> : null
             }
             {
                 seeLogs != null ?
                 <ModalContainer modalTitle="Histórico de pontos" closeFn={toggleState} closeSet={setSeeLogs} isClosing={isModalClosing} >
                     <EmployeeCheckinModal employeeId={seeLogs} />
+                </ModalContainer> : null
+            }
+            {
+                addingLicense ?
+                <ModalContainer modalTitle="Adicionar atestado" closeFn={toggleState} closeSet={setAddingLicense} isClosing={isModalClosing} closeAnimation={false}>
+                    <EmployeeAddLicenseModal employeeId={seeLicense} />
                 </ModalContainer> : null
             }
         </>
