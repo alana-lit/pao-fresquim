@@ -23,7 +23,7 @@ export const websiteLinks = [
     {
         'ItemIcon': FaAddressCard,
         'linkRef': 'Bater ponto',
-        'redirectTo': '/'
+        'redirectTo': '/checkin'
     },
     {
         'ItemIcon': PiSecurityCameraDuotone,
