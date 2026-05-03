@@ -15,7 +15,7 @@ export const ModalContainer = ({ modalTitle, children, closeFn, closeSet, isClos
             showCancelButton: true,
             showConfirmButton: true,
             confirmButtonText: "Sim, quero sair",
-            cancelButtonText: "Não, quero voltar",
+            cancelButtonText: "Não, quero continuar",
             customClass: {
                 confirmButton: "font_inter_regular",
                 closeButton: "font_inter_regular",

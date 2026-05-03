@@ -2,6 +2,7 @@ import { IoIosAddCircle, IoIosAddCircleOutline } from "react-icons/io"
 import { IoPersonRemoveSharp } from "react-icons/io5"
 
 import { AddEmployeeModal } from "../../components/Modals/AddEmployeeModal/AddEmployeeModal"
+import { UpdateEmployeeModal } from "../../components/Modals/UpdateEmployeeModal/UpdateEmployeeModal"
 import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
 import { EmployeeCheckinModal } from "../../components/Modals/EmployeeCheckinsModal/EmployeeCheckinModal"
 import { EmployeeLicensesModal } from "../../components/Modals/EmployeeLicensesModal/EmployeeLicensesModal"
@@ -22,6 +23,10 @@ export const EmployeeManagementPage = () => {
     const [seeLicense, setSeeLicense] = useState(null)
     const [addingLicense, setAddingLicense] = useState(false)
     const [seeLogs, setSeeLogs] = useState(null)
+    const [updateEmployee, setUpdateEmployee] = useState(false)
+    const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
+    const selectedEmployee = employeeMock.find(employee => employee.id === selectedEmployeeId)
+    
 
     const toggleState = (stateToSet, stateFn, hasCloseEffect) => {
         const useCloseEffect = hasCloseEffect || false // This is necessary because if not (i left it unfinished and now idk why it is necessary HAAHAHHAHAHAHH)
@@ -62,13 +67,18 @@ export const EmployeeManagementPage = () => {
                         </div>
                     </div>
                     <ul className="employee_info_list scrollbar">
-                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} />)}
+                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} setUpdateEmployee={setUpdateEmployee} setSelectedEmployeeId={setSelectedEmployeeId}/>)}
                     </ul>
                 </section>
             </div>
             { addEmployeeActive ?
                 <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing} confirmBeforeClose={true}>
                     <AddEmployeeModal />
+                </ModalContainer> : null
+            }
+             { updateEmployee ?
+                <ModalContainer modalTitle="Atualizar informações de (-)" closeFn={toggleState} closeSet={setUpdateEmployee} isClosing={isModalClosing} confirmBeforeClose={true}>
+                    <UpdateEmployeeModal employee={selectedEmployee}/>
                 </ModalContainer> : null
             }
             {
