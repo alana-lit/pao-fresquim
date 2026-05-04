@@ -16,9 +16,11 @@ import java.util.Date;
 public class Serasa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSerasa;
+    private Integer idSerasa;
 
     @Column
     private boolean estadoSerasa = false;
+
+    @Column(length = 200)
+    private String mensagem;
 }

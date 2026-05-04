@@ -5,17 +5,16 @@ import lombok.*;
 
 import java.util.Date;
 
-@Getter
-@Setter
-@MappedSuperclass
 @Entity
 @Table(name = "pessoa")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pessoa  {
+@Getter
+@Setter
+public abstract class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, length = 100)
     private String nome;
@@ -35,9 +34,9 @@ public abstract class Pessoa  {
     @Column
     private Integer idade;
 
-    @Column
+    @Column(name = "data_nascimento")
     private Date dataNascimento;
 
-    @Column(nullable = false, length = 20)
+    @Column(name = "estado_civil", length = 20)
     private String estadoCivil;
 }

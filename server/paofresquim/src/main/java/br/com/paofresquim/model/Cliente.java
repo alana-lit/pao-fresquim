@@ -13,8 +13,8 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "cliente")
+@PrimaryKeyJoinColumn(name = "id")
 public class Cliente extends Pessoa {
-
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_serasa")
