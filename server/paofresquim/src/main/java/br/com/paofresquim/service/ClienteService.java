@@ -69,11 +69,7 @@ public class ClienteService {
     }
 
     private void preencherDados(Cliente cliente, ClienteRequest request) {
-        cliente.setNome(request.getNome());
-        cliente.setEmail(request.getEmail());
-        cliente.setTelefone(request.getTelefone());
-        cliente.setCpf(request.getCpf());
-        cliente.setEndereco(request.getEndereco());
+        cliente.getPessoa().setNome(request.getNome());
     }
 
 }
