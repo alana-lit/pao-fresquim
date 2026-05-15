@@ -4,6 +4,7 @@ import br.com.paofresquim.enums.EstadoCivil;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "pessoa")
@@ -23,7 +24,7 @@ public class Pessoa {
     private String cpf;
 
     @Column(name = "data_nascimento")
-    private LocalDate dataNascimento;
+    private Date dataNascimento;
 
     @Column(nullable = false, length = 150)
     private String email;

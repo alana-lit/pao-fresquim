@@ -1,6 +1,7 @@
 package br.com.paofresquim.dto.response;
 
 import br.com.paofresquim.model.Cliente;
+import br.com.paofresquim.model.Pessoa;
 import lombok.Getter;
 
 import java.util.Date;
@@ -9,13 +10,13 @@ import java.util.Date;
 public class ClienteResponse {
 
     private final Integer id;
-//    private final String nome;
+    private final Pessoa pessoa;
     private final Boolean estadoSerasa;
     private final Boolean inativo;
 
     public ClienteResponse(Cliente cliente) {
         this.id = cliente.getId();
-//        this.nome = cliente.getPessoa().getNome();
+        this.pessoa = cliente.getPessoa();
         this.estadoSerasa = cliente.getEstadoSerasa();
         this.inativo = cliente.getInativo();
     }

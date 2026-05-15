@@ -13,10 +13,9 @@ public class ClienteRequest {
 
     private String nome;
     private String cpf;
+    private Date dataNascimento;
     private String email;
     private String telefone;
     private String endereco;
-    private Integer idade;
-    private Date dataNascimento;
     private String estadoCivil;
 }
