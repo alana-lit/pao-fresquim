@@ -3,7 +3,7 @@ package br.com.paofresquim.model;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "produto")
@@ -23,10 +23,10 @@ public class Produto {
     private String nomeProduto;
 
     @Column(name = "data_fabricacao")
-    private LocalDateTime dataFabricacao;
+    private Date dataFabricacao;
 
     @Column(name = "data_validade")
-    private LocalDateTime dataValidade;
+    private Date dataValidade;
 
     @Column(nullable = false, length = 100)
     private String lote;
