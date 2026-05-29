@@ -4,7 +4,7 @@ import br.com.paofresquim.enums.StatusVenda;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "venda")
@@ -26,7 +26,7 @@ public class Venda {
     private Funcionario funcionario;
 
     @Column(name = "data_compra")
-    private LocalDateTime dataCompra;
+    private Date dataCompra;
 
     @Column(precision = 10, scale = 2)
     private BigDecimal total;
@@ -36,5 +36,5 @@ public class Venda {
     private StatusVenda statusVenda;
 
     @Column(name = "ultima_cobranca")
-    private LocalDateTime ultimaCobranca;
+    private Date ultimaCobranca;
 }
