@@ -3,23 +3,27 @@ package br.com.paofresquim.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-
+@Entity
+@Table(name = "cliente")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@Table(name = "cliente")
-@PrimaryKeyJoinColumn(name = "id")
-public class Cliente extends Pessoa {
+public class Cliente {
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_serasa")
-    private Serasa serasa;
+    @Id
+    @Column(name = "id_pessoa")
+    private Integer id;
 
-    @Column
-    private boolean inativo = true;
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
+
+    @Column(name = "estado_serasa")
+    private Boolean estadoSerasa = false;
+
+    @Column(name = "inativo")
+    private Boolean inativo = false;
 }
