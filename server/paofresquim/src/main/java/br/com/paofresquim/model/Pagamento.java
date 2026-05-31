@@ -4,7 +4,7 @@ import br.com.paofresquim.enums.MeioPagamento;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "pagamento")
@@ -29,6 +29,6 @@ public class Pagamento {
     private BigDecimal valorPagamento;
 
     @Column(name = "data_pagamento")
-    private LocalDate dataPagamento;
+    private Date dataPagamento;
 }
 
