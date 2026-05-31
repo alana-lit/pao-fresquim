@@ -6,6 +6,8 @@ import './select.css'
 export const Select = ({ LabelIcon, defaultValue, optionsList, acceptsDefault}) => {
     const [show, setShow] = useState(false)
     const [isClosing, setClosing] = useState(false)
+    const [value, setValue] = useState(defaultValue)
+
     const selectRef = useRef(null)
 
     const toggleActive = () => {
@@ -33,12 +35,12 @@ export const Select = ({ LabelIcon, defaultValue, optionsList, acceptsDefault}) 
                 <LabelIcon />
             </div>
             <div className="selected_option">
-                <input type="hidden" required/>
-                <span className="font_inter_semibold">{defaultValue}</span>
+                <input type="hidden" value={value} required/>
+                <span className="font_inter_semibold">{value}</span>
             </div>
             <ul className={`drop_options scrollbar ${show ? 'show animate__fadeIn' : ''} ${isClosing ? 'animate__fadeOut' : ''} animate__animated`}>
                 {
-                    optionsList.map((el, idx) => <SelectOption optionInfo={el} key={idx}/>)
+                    optionsList.map((el, idx) => <SelectOption option={el} setValue={setValue} key={idx}/>)
                 }
             </ul>
         </div>

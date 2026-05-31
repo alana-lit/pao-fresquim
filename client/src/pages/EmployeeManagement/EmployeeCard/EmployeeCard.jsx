@@ -14,15 +14,15 @@ export const EmployeeCard = ({ employeeInfo, isDeletingEmployees, setCheckins, o
                 <p className="font_inter_regular">Data de contratação: {employeeInfo.dataContratacao}</p>
                 <p className="font_inter_regular">E-mail: {employeeInfo.email}</p>
                 <p className="font_inter_regular">Contato: {employeeInfo.telefone}</p>
-                <p className="font_inter_regular">Nome contato emergência: {employeeInfo.nomeContatoEmergencia}</p>
-                <p className="font_inter_regular">Contato de emergência: {employeeInfo.contatoEmergencia}</p>
                 <p className="font_inter_regular">Salario: R$ {employeeInfo.salario}</p>
                 <p className="font_inter_regular">PIS: {employeeInfo.pisPasep}</p>
+                <p className="font_inter_regular">Nome contato emergência: {employeeInfo.nomeContatoEmergencia}</p>
+                <p className="font_inter_regular">Contato de emergência: {employeeInfo.contatoEmergencia}</p>
             </div>
             <div className="options_container">
                 <button className="round" onClick={(_) => openFn(employeeInfo.id, setLicenses, true)}>Atestados e Licenças</button>
                 <button className="round" onClick={(_) => openFn(employeeInfo.id, setCheckins, true)}>Histórico de Pontos</button>
-               <button className="round" onClick={(_) => {openFn(employeeInfo.id, setSelectedEmployeeId, true); openFn(true, setUpdateEmployee, true)}}> Atualizar Informações</button>
+               <button className="round" onClick={(_) => {openFn(employeeInfo.id, setSelectedEmployeeId, true)}}> Atualizar Informações</button>
             </div>
         </li>
     )

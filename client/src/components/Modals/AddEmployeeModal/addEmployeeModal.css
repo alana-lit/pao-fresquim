@@ -6,6 +6,9 @@ form.employee_modal {
     padding: 0 1rem;
     gap: 1rem;
 
+    max-height: 85vh;
+    overflow-y: scroll;
+
     & > button {
         width: 100%;
         max-width: 380px;

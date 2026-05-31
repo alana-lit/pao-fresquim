@@ -6,16 +6,16 @@ import { UpdateEmployeeModal } from "../../components/Modals/UpdateEmployeeModal
 import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
 import { EmployeeCheckinModal } from "../../components/Modals/EmployeeCheckinsModal/EmployeeCheckinModal"
 import { EmployeeLicensesModal } from "../../components/Modals/EmployeeLicensesModal/EmployeeLicensesModal"
+import { EmployeeAddLicenseModal } from "../../components/Modals/EmployeeAddLicenseModal/EmployeeAddLicenseModal"
 
 import { SideBar } from "../../components/SideBar/SideBar"
 import { EmployeeCard } from "./EmployeeCard/EmployeeCard"
 
-import { employeeMock } from "../../mocks/employeeMock"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+import Swal from "sweetalert2"
 
 import './employeeManagementPage.css'
-import { EmployeeAddLicenseModal } from "../../components/Modals/EmployeeAddLicenseModal/EmployeeAddLicenseModal"
-import Swal from "sweetalert2"
 
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
@@ -26,10 +26,9 @@ export const EmployeeManagementPage = () => {
     const [seeLogs, setSeeLogs] = useState(null)
     const [updateEmployee, setUpdateEmployee] = useState(false)
     const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
-    const selectedEmployee = employeeMock.find(employee => employee.id === selectedEmployeeId)
 
     const [employeeList, setEmployeeList] = useState([])
-    useState(() => {
+    useEffect(() => {
         const BASE_URL = import.meta.env.VITE_DB_URL
         const handleGetEmployees = async () => {
             const response = await fetch(`${BASE_URL}/funcionario`, {
@@ -148,12 +147,12 @@ export const EmployeeManagementPage = () => {
             </div>
             { addEmployeeActive ?
                 <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing} confirmBeforeClose={true}>
-                    <AddEmployeeModal />
+                    <AddEmployeeModal employeeList={employeeList} setEmployeeList={setEmployeeList} handleEmployeeSectorStatistics={handleEmployeeSectorStatistics} />
                 </ModalContainer> : null
             }
-             { updateEmployee ?
-                <ModalContainer modalTitle="Atualizar informações de (-)" closeFn={toggleState} closeSet={setUpdateEmployee} isClosing={isModalClosing} confirmBeforeClose={true}>
-                    <UpdateEmployeeModal employee={selectedEmployee}/>
+            { selectedEmployeeId ?
+                <ModalContainer modalTitle="Atualizar informações" closeFn={toggleState} closeSet={setSelectedEmployeeId} isClosing={isModalClosing} confirmBeforeClose={true}>
+                    <UpdateEmployeeModal employeeId={selectedEmployeeId}/>
                 </ModalContainer> : null
             }
             {
