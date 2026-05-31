@@ -6,7 +6,7 @@ export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside, def
 
     useEffect(() => {
         setDirty(defaultValue?.length > 0)
-        document.querySelector(`input#${id}`).value = defaultValue
+        document.querySelector(`input#${id}`).value = defaultValue || ""
     }, [defaultValue])
 
     const handleInputEvent = (e) => {
