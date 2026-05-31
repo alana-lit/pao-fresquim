@@ -15,6 +15,7 @@ import { useState } from "react"
 
 import './employeeManagementPage.css'
 import { EmployeeAddLicenseModal } from "../../components/Modals/EmployeeAddLicenseModal/EmployeeAddLicenseModal"
+import Swal from "sweetalert2"
 
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
@@ -26,7 +27,51 @@ export const EmployeeManagementPage = () => {
     const [updateEmployee, setUpdateEmployee] = useState(false)
     const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
     const selectedEmployee = employeeMock.find(employee => employee.id === selectedEmployeeId)
-    
+
+    const [employeeList, setEmployeeList] = useState([])
+    useState(() => {
+        const BASE_URL = import.meta.env.VITE_DB_URL
+        const handleGetEmployees = async () => {
+            const response = await fetch(`${BASE_URL}/funcionario`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const data = await response.json()
+
+            setEmployeeList(data)
+            handleEmployeeSectorStatistics(data)
+        }
+
+        handleGetEmployees()
+    }, [])
+
+    const handleEmployeeSectorStatistics = (employeeList) => {
+        const ul = document.querySelector('ul.employeeSectorStatistics')
+        ul.innerHTML = ""
+
+        const statistics = {}
+        for(let employee of employeeList) {
+            if(!(employee.cargo in statistics)) {
+                statistics[employee.cargo] = 1
+                continue
+            }
+
+            statistics[employee.cargo]++
+        }
+
+        const totalEmployees = employeeList.length > 0 ? Object.values(statistics).reduce((acc, total) => acc + total) : 0
+
+        document.querySelector("span.spanNumEmployee").innerText = totalEmployees
+        for(const sectorInfo in statistics) {
+            const li = document.createElement("li")
+            li.innerText = `${sectorInfo}: ${statistics[sectorInfo]}`
+            li.className = "font_inter_semibold round"
+
+            ul.appendChild(li)
+        }
+    }
 
     const toggleState = (stateToSet, stateFn, hasCloseEffect) => {
         const useCloseEffect = hasCloseEffect || false // This is necessary because if not (i left it unfinished and now idk why it is necessary HAAHAHHAHAHAHH)
@@ -42,6 +87,38 @@ export const EmployeeManagementPage = () => {
         stateFn(stateToSet)
     }
 
+    const deleteEmployee = (employeeId) => {
+        const BASE_URL = import.meta.env.VITE_DB_URL
+        const handleDeleteEmployees = async () => {
+            const response = await fetch(`${BASE_URL}/funcionario/${employeeId}`, {
+                method: "DELETE"
+            })
+
+            if(response.status != 204) {
+                Swal.fire({
+                    title: "Não foi possível excluir o funcionário!",
+                    text: "Por favor, aguarde um momento e tente novamente ou entre em contato com nossa equipe para que possamos melhor lhe atender.",
+                    icon: "error"
+                })
+                return
+            }
+            
+            const newEmployeeList = employeeList.filter(employee => employee.id != employeeId)
+            console.log(newEmployeeList);
+            
+            setEmployeeList(newEmployeeList)
+            handleEmployeeSectorStatistics(newEmployeeList)
+
+            Swal.fire({
+                title: "Funcionário excluído com sucesso!",
+                text: "O funcionário não aparecerá mais na lista de funcionários.",
+                icon: "success"
+            })
+        }
+
+        handleDeleteEmployees()
+    }
+
     return (
         <>
             <div className="container">
@@ -50,11 +127,9 @@ export const EmployeeManagementPage = () => {
                     <h1 className="font_poppins_regular">Gestão de funcionários</h1>
                     <div className="employee_overview">
                         <div className="departments_info">
-                            <p className="font_poppins_regular">Total de Funcionários: <span>X</span></p>
+                            <p className="font_poppins_regular">Total de Funcionários: <span className="spanNumEmployee">X</span></p>
                             <p className="font_poppins_regular">Quantidade de funcionários por setor:</p>
-                            <ul className="scrollbar">
-                                <li className="font_inter_semibold round">Padaria: 2</li>
-                                <li className="font_inter_semibold round">Caixa: 3</li>
+                            <ul className="scrollbar employeeSectorStatistics">
                             </ul>
                         </div>
                         <div className="employee_options">
@@ -67,7 +142,7 @@ export const EmployeeManagementPage = () => {
                         </div>
                     </div>
                     <ul className="employee_info_list scrollbar">
-                        {employeeMock.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} setUpdateEmployee={setUpdateEmployee} setSelectedEmployeeId={setSelectedEmployeeId}/>)}
+                        {employeeList.map((employee, idx) => <EmployeeCard employeeInfo={employee} isDeletingEmployees={isDeletingEmployees} key={idx} setCheckins={setSeeLogs} openFn={toggleState} setLicenses={setSeeLicense} setUpdateEmployee={setUpdateEmployee} setSelectedEmployeeId={setSelectedEmployeeId} deleteEmployee={deleteEmployee} />)}
                     </ul>
                 </section>
             </div>

@@ -10,6 +10,10 @@ import { Select } from '../../Select/Select.jsx'
 import './addEmployeeModal.css'
 
 export const AddEmployeeModal = () => {
+    const handleCreateEmployee = () => {
+        // const URL = process.env.DB_URL;
+    }
+
     return (
         <form className='employee_modal'>
             <Input id="emp_name" placeholder="Nome do Funcionário" inputType="text" hasIconAside={true} LabelIcon={GrUserWorker} />
