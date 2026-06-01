@@ -6,7 +6,7 @@ import './select.css'
 export const Select = ({ LabelIcon, defaultValue, optionsList, acceptsDefault}) => {
     const [show, setShow] = useState(false)
     const [isClosing, setClosing] = useState(false)
-    const [value, setValue] = useState(defaultValue)
+    const [value, setValue] = useState("")
 
     const selectRef = useRef(null)
 
@@ -28,6 +28,10 @@ export const Select = ({ LabelIcon, defaultValue, optionsList, acceptsDefault}) 
 
         document.addEventListener('mousedown', handleOutClick)
     }, [])
+
+    useEffect(() => {
+        setValue(defaultValue || "Escolha uma opção")
+    }, [defaultValue])
 
     return (
         <div className="select_container" onClick={toggleActive} id={defaultValue} ref={selectRef}>

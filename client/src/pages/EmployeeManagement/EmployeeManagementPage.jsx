@@ -103,7 +103,6 @@ export const EmployeeManagementPage = () => {
             }
             
             const newEmployeeList = employeeList.filter(employee => employee.id != employeeId)
-            console.log(newEmployeeList);
             
             setEmployeeList(newEmployeeList)
             handleEmployeeSectorStatistics(newEmployeeList)

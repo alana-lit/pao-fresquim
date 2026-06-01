@@ -27,6 +27,7 @@ export const AddEmployeeModal = ({ employeeList, setEmployeeList, handleEmployee
             "emp_cpf": {"type": "string", "alias": "cpf"},
             "emp_contact": {"type": "string", "alias": "telefone"},
             "emp_email": {"type": "string", "alias": "email"},
+            "select1": {"type": "string", "alias": "cargo"},
             "emp_hireDate": {"type": "string", "alias": "dataContratacao"},
             "emp_salary": {"type": "float", "alias": "salario"},
             "emp_pisPasep": {"type": "string", "alias": "pisPasep"},
@@ -51,6 +52,7 @@ export const AddEmployeeModal = ({ employeeList, setEmployeeList, handleEmployee
                 text: "Tente novamente mais tarde ou entre em contato conosco para melhor lhe atender.",
                 icon: "error"
             })
+            return
         }
 
         const data = await response.json()

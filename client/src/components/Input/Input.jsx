@@ -5,7 +5,7 @@ export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside, def
     const [dirty, setDirty] = useState();
 
     useEffect(() => {
-        setDirty(defaultValue?.length > 0)
+        setDirty(typeof defaultValue === "number" || defaultValue?.length > 0)
         document.querySelector(`input#${id}`).value = defaultValue || ""
     }, [defaultValue])
 

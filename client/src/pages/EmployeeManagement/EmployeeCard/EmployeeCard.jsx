@@ -15,6 +15,7 @@ export const EmployeeCard = ({ employeeInfo, isDeletingEmployees, setCheckins, o
                 <p className="font_inter_regular">E-mail: {employeeInfo.email}</p>
                 <p className="font_inter_regular">Contato: {employeeInfo.telefone}</p>
                 <p className="font_inter_regular">Salario: R$ {employeeInfo.salario}</p>
+                <p className="font_inter_regular">CPF: {employeeInfo.cpf}</p>
                 <p className="font_inter_regular">PIS: {employeeInfo.pisPasep}</p>
                 <p className="font_inter_regular">Nome contato emergência: {employeeInfo.nomeContatoEmergencia}</p>
                 <p className="font_inter_regular">Contato de emergência: {employeeInfo.contatoEmergencia}</p>

@@ -14,14 +14,16 @@ export const processPayload = (formSelector, schema) => {
         alias is the new name of the key, because ID's might differ from DB's schemas, so we fix it.
     */
     const form = document.querySelector(formSelector)
-    console.log(form);
-    
+    let selectId = 1
     
     const payload = {}
     for(const el of form.children) {
         if(el.tagName == "BUTTON") continue
         if(el.children[1].tagName != "INPUT") { // If this is not an input, then it's a select component
-            payload[el] = document.querySelector("div.selected_option>input").value
+            payload[
+                schema[`select${selectId}`].alias
+            ] = document.querySelector("div.selected_option>input").value
+            selectId++
             continue
         }
     
@@ -33,7 +35,7 @@ export const processPayload = (formSelector, schema) => {
         } else if(schema[input.id].type == "int") {
             value = Number.parseInt(value)
         }
-    
+
         payload[
             schema[input.id].alias
         ] = value
