@@ -13,51 +13,30 @@ import { FaHandsHelping } from 'react-icons/fa'
 import { Input } from '../../Input/Input.jsx'
 import { Select } from '../../Select/Select.jsx'
 
+import { processPayload } from '../../../utils/requests.js'
+
 import './addEmployeeModal.css'
 import Swal from 'sweetalert2'
-
-const _AUX = {
-    "emp_name": "nome",
-    "emp_cpf": "cpf",
-    "emp_contact": "telefone",
-    "emp_email": "email",
-    "emp_hireDate": "dataContratacao",
-    "emp_salary": "salario",
-    "emp_pisPasep": "pisPasep",
-    "emp_hash": "matricula",
-    "emp_nameEmergContact": "nomeContatoEmergencia",
-    "emp_emergContact": "contatoEmergencia"
-}
 
 export const AddEmployeeModal = ({ employeeList, setEmployeeList, handleEmployeeSectorStatistics }) => {
     const handleCreateEmployee = async (e) => {
         e.preventDefault()
 
-        const BASE_URL = import.meta.env.VITE_DB_URL
-        const form = document.querySelector("form.employee_modal")
-
-        const payload = {}
-        for(const el of form.children) {
-            if(el.tagName == "BUTTON") continue
-            if(el.children[1].tagName != "INPUT") {
-                payload["cargo"] = document.querySelector("div.selected_option>input").value
-                continue
-            }
-
-            const input = el.children[1]
-            let value = input.value
-
-            if(input.id == "emp_salary") {
-                value = Number.parseFloat(value)
-            } else if(input.id == "emp_hash") {
-                value = Number.parseInt(value)
-            }
-
-            payload[
-                _AUX[input.id]
-            ] = value
+        const schema = {
+            "emp_name": {"type": "string", "alias": "nome"},
+            "emp_cpf": {"type": "string", "alias": "cpf"},
+            "emp_contact": {"type": "string", "alias": "telefone"},
+            "emp_email": {"type": "string", "alias": "email"},
+            "emp_hireDate": {"type": "string", "alias": "dataContratacao"},
+            "emp_salary": {"type": "float", "alias": "salario"},
+            "emp_pisPasep": {"type": "string", "alias": "pisPasep"},
+            "emp_hash": {"type": "int", "alias": "matricula"},
+            "emp_nameEmergContact": {"type": "string", "alias": "nomeContatoEmergencia"},
+            "emp_emergContact": {"type": "string", "alias": "contatoEmergencia"}
         }
+        const payload = processPayload("form.employee_modal", schema)
 
+        const BASE_URL = import.meta.env.VITE_DB_URL
         const response = await fetch(`${BASE_URL}/funcionario`, {
             method: "POST",
             headers: {
