@@ -38,6 +38,6 @@ export const websiteLinks = [
     {
         'ItemIcon': FaCashRegister,
         'linkRef': 'Área de vendas',
-        'redirectTo': '/'
+        'redirectTo': '/sales'
     },
 ]

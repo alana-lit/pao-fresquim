@@ -155,7 +155,7 @@ export const SalesPage = () => {
                                 id="productCode"
                                 icon={<FaBarcode />}
                                 placeholder="Código do produto"
-                                value={productCode}
+                                defaultValue={productCode}
                                 type="text"
                             />
                         </div>
@@ -326,19 +326,22 @@ export const SalesPage = () => {
                                     <h3>Dados do cliente</h3>
 
                                     <Input
+                                        id="fiado_name"
                                         placeholder="Nome completo"
-                                        value={fiadoData.name}
+                                        defaultValue={fiadoData.name}
                                         onChange={e =>
                                             setFiadoData(prev => ({
                                                 ...prev,
                                                 name: e.target.value
                                             }))
                                         }
+
                                     />
 
                                     <Input
+                                        id="fiado_cpf"
                                         placeholder="CPF"
-                                        value={fiadoData.cpf}
+                                        defaultValue={fiadoData.cpf}
                                         onChange={e =>
                                             setFiadoData(prev => ({
                                                 ...prev,
@@ -348,8 +351,9 @@ export const SalesPage = () => {
                                     />
 
                                     <Input
+                                        id="fiado_contact"
                                         placeholder="Telefone"
-                                        value={fiadoData.phone}
+                                        defaultValue={fiadoData.phone}
                                         onChange={e =>
                                             setFiadoData(prev => ({
                                                 ...prev,
@@ -359,8 +363,9 @@ export const SalesPage = () => {
                                     />
 
                                     <Input
+                                        id="fiado_address"
                                         placeholder="Endereço"
-                                        value={fiadoData.address}
+                                        defaultValue={fiadoData.address}
                                         onChange={e =>
                                             setFiadoData(prev => ({
                                                 ...prev,

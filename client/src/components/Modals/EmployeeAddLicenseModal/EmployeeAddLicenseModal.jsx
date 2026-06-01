@@ -28,6 +28,7 @@ export const EmployeeAddLicenseModal = ({ employeeId }) => {
 
     return (
         <form className="add_license_form" onSubmit={handleSubmit}>
+            <Input placeholder="Nome" />
             <input id="addLicenseInput" type="file" hidden onChange={(e) => setFileName(e.target.value)} />
             <label htmlFor="addLicenseInput" className="font_inter_regular">
                 <CiImageOn />
