@@ -14,6 +14,8 @@ export const processPayload = (formSelector, schema) => {
         alias is the new name of the key, because ID's might differ from DB's schemas, so we fix it.
     */
     const form = document.querySelector(formSelector)
+    console.log(form);
+    
     
     const payload = {}
     for(const el of form.children) {
