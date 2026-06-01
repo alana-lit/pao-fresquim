@@ -151,7 +151,7 @@ export const EmployeeManagementPage = () => {
             }
             { selectedEmployeeId ?
                 <ModalContainer modalTitle="Atualizar informações" closeFn={toggleState} closeSet={setSelectedEmployeeId} isClosing={isModalClosing} confirmBeforeClose={true}>
-                    <UpdateEmployeeModal employeeId={selectedEmployeeId}/>
+                    <UpdateEmployeeModal employeeId={selectedEmployeeId} employeeList={employeeList} setEmployeeList={setEmployeeList} handleEmployeeSectorStatistics={handleEmployeeSectorStatistics}/>
                 </ModalContainer> : null
             }
             {
