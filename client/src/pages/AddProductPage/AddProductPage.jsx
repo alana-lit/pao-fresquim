@@ -1,4 +1,3 @@
-import './addProduct.css'
 import { SideBar } from '../../components/SideBar/SideBar.jsx'
 import { Input } from '../../components/Input/Input.jsx'
 import { MdAttachMoney, MdDateRange, MdOutlineAddShoppingCart, MdOutlineDescription, MdOutlineNewLabel } from 'react-icons/md'
@@ -6,7 +5,10 @@ import { FaBarcode, FaBox } from 'react-icons/fa'
 import { LiaInfoSolid } from 'react-icons/lia'
 import { TbMoodSick } from 'react-icons/tb'
 import { processPayload } from '../../utils/requests.js'
+
 import Swal from 'sweetalert2'
+
+import './addProduct.css'
 
 export const AddProductPage = () => {
     const handleAddProduct = async (e) => {

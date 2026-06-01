@@ -18,7 +18,7 @@ export const processPayload = (formSelector, schema) => {
     
     const payload = {}
     for(const el of form.children) {
-        if(el.tagName == "BUTTON") continue
+        if(el.tagName == "BUTTON" || el.tagName != "DIV") continue
         if(el.children[1].tagName != "INPUT") { // If this is not an input, then it's a select component
             payload[
                 schema[`select${selectId}`].alias
@@ -29,7 +29,7 @@ export const processPayload = (formSelector, schema) => {
     
         const input = el.children[1]
         let value = input.value
-    
+
         if(schema[input.id].type == "float") {
             value = Number.parseFloat(value)
         } else if(schema[input.id].type == "int") {

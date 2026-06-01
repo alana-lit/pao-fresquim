@@ -45,7 +45,7 @@ export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside, def
                 </label> : null
             }
             <input onInput={(e) => handleInputEvent(e)} type={inputType != 'number' ? inputType : 'text'} id={id} />
-            <label htmlFor={id} className={`placeholder font_inter_semibold ${dirty ? "active" : ""}`}>{placeholder}</label>
+            <label htmlFor={id} className={`placeholder font_inter_semibold ${dirty || inputType === "date" ? "active" : ""}`}>{placeholder}</label>
         </div>
     )
 }

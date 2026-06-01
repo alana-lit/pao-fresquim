@@ -72,7 +72,6 @@ export const UpdateEmployeeModal = ({ employeeId, employeeList, setEmployeeList,
         }
 
         const data = await response.json()
-
         const updatedList = employeeList.map(employee => employee.id != employeeId ? employee : data)
         
         setEmployeeList(updatedList)

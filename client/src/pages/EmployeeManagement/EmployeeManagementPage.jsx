@@ -157,7 +157,7 @@ export const EmployeeManagementPage = () => {
             {
                 seeLicense != null ?
                 <ModalContainer modalTitle="Licenças e atestados" closeFn={toggleState} closeSet={setSeeLicense} isClosing={isModalClosing} >
-                    <EmployeeLicensesModal employeeId={seeLicense} addingLicense={setAddingLicense} openFn={toggleState} />
+                    <EmployeeLicensesModal employeeInfo={seeLicense} addingLicense={setAddingLicense} openFn={toggleState} />
                 </ModalContainer> : null
             }
             {
