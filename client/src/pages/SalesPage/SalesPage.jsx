@@ -9,6 +9,7 @@ import { Input } from "../../components/Input/Input"
 import { ModalContainer } from "../../components/ModalContainer/ModalContainer"
 
 import "./salesPage.css"
+import { SideBar } from "../../components/SideBar/SideBar"
 
 const mockProducts = [
     {
@@ -138,6 +139,7 @@ export const SalesPage = () => {
 
     return (
         <div className="sales-page scrollbar">
+            <SideBar />
             <div className="sales-container">
 
                 {/* LEFT */}
