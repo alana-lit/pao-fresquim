@@ -14,6 +14,7 @@ export const SideBar = () => {
                     websiteLinks.map((link, idx) => <SideBarItem item={link} key={idx}/>)
                 }
             </ul>
+            <button className="font_inter_semibold">Sair</button>
         </aside>
     )
 }

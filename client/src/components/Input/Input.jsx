@@ -1,8 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './input.css'
 
 export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside, defaultValue }) => {
-    const [dirty, setDirty] = useState(defaultValue?.length > 0);
+    const [dirty, setDirty] = useState();
+
+    useEffect(() => {
+        setDirty(typeof defaultValue === "number" || defaultValue?.length > 0)
+        document.querySelector(`input#${id}`).value = defaultValue || ""
+    }, [defaultValue])
 
     const handleInputEvent = (e) => {
         if(inputType != 'number') { // If the input is not a number, do nothing but set dirty to true or false.
@@ -39,8 +44,8 @@ export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside, def
                     <LabelIcon />
                 </label> : null
             }
-            <input onInput={(e) => handleInputEvent(e)} type={inputType != 'number' ? inputType : 'text'} id={id} defaultValue={defaultValue || ''} />
-            <label htmlFor={id} className={`placeholder font_inter_semibold ${dirty ? "active" : ""}`}>{placeholder}</label>
+            <input onInput={(e) => handleInputEvent(e)} type={inputType != 'number' ? inputType : 'text'} id={id} />
+            <label htmlFor={id} className={`placeholder font_inter_semibold ${dirty || inputType === "date" ? "active" : ""}`}>{placeholder}</label>
         </div>
     )
 }

@@ -2,7 +2,9 @@ package br.com.paofresquim.service;
 
 import br.com.paofresquim.dto.request.ClienteRequest;
 import br.com.paofresquim.dto.response.ClienteResponse;
+import br.com.paofresquim.enums.EstadoCivil;
 import br.com.paofresquim.model.Cliente;
+import br.com.paofresquim.model.Pessoa;
 import br.com.paofresquim.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -69,11 +71,17 @@ public class ClienteService {
     }
 
     private void preencherDados(Cliente cliente, ClienteRequest request) {
-        cliente.setNome(request.getNome());
-        cliente.setEmail(request.getEmail());
-        cliente.setTelefone(request.getTelefone());
-        cliente.setCpf(request.getCpf());
-        cliente.setEndereco(request.getEndereco());
+        Pessoa  pessoa = new Pessoa();
+        pessoa.setNome(request.getNome());
+        pessoa.setCpf(request.getCpf());
+        pessoa.setDataNascimento(request.getDataNascimento());
+        pessoa.setEmail(request.getEmail());
+        pessoa.setTelefone(request.getTelefone());
+        pessoa.setEndereco(request.getEndereco());
+        pessoa.setEstadoCivil(EstadoCivil.valueOf(request.getEstadoCivil()));
+
+        cliente.setPessoa(pessoa);
+
     }
 
 }

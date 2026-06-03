@@ -1,7 +1,5 @@
 div.page_container {
     display: flex;
-    align-items: center;
-
     gap: 2rem;
 
     @media screen and (width <= 700px) {
@@ -15,6 +13,7 @@ div.page_container > form {
     flex-direction: column;
     align-items: center;
 
+    padding: 1rem 0;
     gap: 1rem;
 
     & > div {

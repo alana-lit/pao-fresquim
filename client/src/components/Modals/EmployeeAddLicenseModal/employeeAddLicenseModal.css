@@ -11,9 +11,9 @@ form.add_license_form {
         justify-content: flex-start;
         align-items: center;
 
-        width: 100%;
+        width: clamp(100px, 50vw, 300px);
 
-        box-shadow: 0px 0px 16px var(--black);
+        box-shadow: 0px 0px 16px #00000020;
         border-radius: 12px;
         
         gap: .6rem;
