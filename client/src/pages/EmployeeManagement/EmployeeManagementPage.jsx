@@ -160,7 +160,7 @@ export const EmployeeManagementPage = () => {
             {
                 seeLicense != null ?
                 <ModalContainer modalTitle="Licenças e atestados" closeFn={toggleState} closeSet={setSeeLicense} isClosing={isModalClosing} >
-                    <EmployeeLicensesModal employeeInfo={seeLicense} addingLicense={setAddingLicense} openFn={toggleState} />
+                    <EmployeeLicensesModal employeeId={seeLicense.employeeId} addingLicense={setAddingLicense} openFn={toggleState} />
                 </ModalContainer> : null
             }
             {
@@ -172,7 +172,7 @@ export const EmployeeManagementPage = () => {
             {
                 addingLicense ?
                 <ModalContainer modalTitle="Adicionar atestado" closeFn={toggleState} closeSet={setAddingLicense} isClosing={isModalClosing} closeAnimation={false}>
-                    <EmployeeAddLicenseModal employeeId={seeLicense} />
+                    <EmployeeAddLicenseModal employeeHash={seeLicense.employeeHash} />
                 </ModalContainer> : null
             }
             {
