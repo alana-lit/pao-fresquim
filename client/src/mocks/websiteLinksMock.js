@@ -28,7 +28,7 @@ export const websiteLinks = [
     {
         'ItemIcon': PiSecurityCameraDuotone,
         'linkRef': 'Acessar câmeras',
-        'redirectTo': '/'
+        'redirectTo': '/camera'
     },
     {
         'ItemIcon': FaChartPie,

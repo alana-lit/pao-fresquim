@@ -44,6 +44,7 @@ export const Input = ({ id, placeholder, inputType, LabelIcon, hasIconAside, def
                     <LabelIcon />
                 </label> : null
             }
+            
             <input onInput={(e) => handleInputEvent(e)} type={inputType != 'number' ? inputType : 'text'} id={id} />
             <label htmlFor={id} className={`placeholder font_inter_semibold ${dirty ? "active" : ""}`}>{placeholder}</label>
         </div>
