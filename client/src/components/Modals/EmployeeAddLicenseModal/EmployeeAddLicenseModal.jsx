@@ -47,7 +47,7 @@ export const EmployeeAddLicenseModal = ({ employeeHash }) => {
         }
         const payload = processPayload("form.add_license_form", schema)
         const base64 = await _toBase64(file)
-        const fullPayload = {"matricula": employeeId, ...payload, "arquivo": base64}
+        const fullPayload = {"matricula": employeeHash, ...payload, "arquivo": base64}
         
         const BASE_URL = import.meta.env.VITE_DB_URL
         const response = await fetch(`${BASE_URL}/atestado`, {
