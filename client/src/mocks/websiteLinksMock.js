@@ -33,7 +33,7 @@ export const websiteLinks = [
     {
         'ItemIcon': FaChartPie,
         'linkRef': 'Relatório',
-        'redirectTo': '/'
+        'redirectTo': '/report'
     },
     {
         'ItemIcon': FaCashRegister,

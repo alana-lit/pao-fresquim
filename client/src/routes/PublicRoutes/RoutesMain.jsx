@@ -6,6 +6,7 @@ import { EmployeeManagementPage } from '../../pages/EmployeeManagement/EmployeeM
 import { CheckinPage } from '../../pages/CheckinPage/CheckinPage'
 import { SalesPage } from '../../pages/SalesPage/SalesPage'
 import { PrivateRoutes } from '../PrivateRoutes/PrivateRoutes'
+import { ReportPage } from '../../pages/ReportPage/ReportPage'
 
 export const RoutesMain = () => {
     return (
@@ -17,6 +18,7 @@ export const RoutesMain = () => {
                 <Route path='/employees' element={<EmployeeManagementPage />} />
                 <Route path='/checkin' element={<CheckinPage />} />
                 <Route path='/sales' element={<SalesPage />} />
+                <Route path='/report' element={<ReportPage />} />
             </Route>
         </Routes>
     )
