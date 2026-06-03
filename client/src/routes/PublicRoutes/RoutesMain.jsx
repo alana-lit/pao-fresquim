@@ -7,6 +7,8 @@ import { CheckinPage } from '../../pages/CheckinPage/CheckinPage'
 import { SalesPage } from '../../pages/SalesPage/SalesPage'
 import { PrivateRoutes } from '../PrivateRoutes/PrivateRoutes'
 import { ProductsPage } from '../../pages/ProductsPage/ProductsPage'
+import { ReportPage } from '../../pages/ReportPage/ReportPage'
+import { Camera } from '../../pages/Camera/Camera'
 
 export const RoutesMain = () => {
     return (
@@ -19,6 +21,8 @@ export const RoutesMain = () => {
                 <Route path='/checkin' element={<CheckinPage />} />
                 <Route path='/sales' element={<SalesPage />} />
                 <Route path='/products' element={<ProductsPage />} />
+                <Route path='/report' element={<ReportPage />} />
+                <Route path='/camera' element={<Camera />} />
             </Route>
         </Routes>
     )
