@@ -1,0 +1,29 @@
+li.product_card_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: var(--grey);
+    border-radius: 12px;
+    
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem 1rem;
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        gap: .3rem;
+    }
+
+    & > button {
+        background-color: transparent;
+        cursor: pointer;
+
+        & > svg {
+            width: clamp(15px, 50vw, 25px);
+            height: clamp(15px, 50vw, 25px);
+
+            color: var(--red);
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { IoHome } from 'react-icons/io5'
-import { FaAddressCard, FaBarcode, FaCashRegister } from 'react-icons/fa'
+import { FaAddressCard, FaBarcode, FaCashRegister, FaProductHunt } from 'react-icons/fa'
 import { GrUserWorker } from 'react-icons/gr'
 import { PiSecurityCameraDuotone } from 'react-icons/pi'
 import { FaChartPie } from 'react-icons/fa6'
@@ -13,6 +13,11 @@ export const websiteLinks = [
     {
         'ItemIcon': FaBarcode,
         'linkRef': 'Cadastro de produtos',
+        'redirectTo': '/product_add'
+    },
+    {
+        'ItemIcon': FaProductHunt,
+        'linkRef': 'Listagem de produtos',
         'redirectTo': '/products'
     },
     {

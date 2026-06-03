@@ -18,10 +18,11 @@ import { processPayload } from '../../../utils/requests.js'
 import './addEmployeeModal.css'
 import Swal from 'sweetalert2'
 
-export const AddEmployeeModal = ({ employeeList, setEmployeeList, handleEmployeeSectorStatistics }) => {
+export const AddEmployeeModal = ({ employeeList, setEmployeeList, handleEmployeeSectorStatistics, setLoading }) => {
     const handleCreateEmployee = async (e) => {
         e.preventDefault()
 
+        setLoading(true)
         const schema = {
             "emp_name": {"type": "string", "alias": "nome"},
             "emp_cpf": {"type": "string", "alias": "cpf"},
@@ -52,6 +53,7 @@ export const AddEmployeeModal = ({ employeeList, setEmployeeList, handleEmployee
                 text: "Tente novamente mais tarde ou entre em contato conosco para melhor lhe atender.",
                 icon: "error"
             })
+            setLoading(false)
             return
         }
 
@@ -65,6 +67,7 @@ export const AddEmployeeModal = ({ employeeList, setEmployeeList, handleEmployee
         })
 
         handleEmployeeSectorStatistics([...employeeList, data])
+        setLoading(false)
     }
 
     return (

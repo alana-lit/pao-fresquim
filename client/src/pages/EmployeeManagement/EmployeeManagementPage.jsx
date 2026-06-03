@@ -16,6 +16,7 @@ import { useEffect, useState } from "react"
 import Swal from "sweetalert2"
 
 import './employeeManagementPage.css'
+import { Loader } from "../../components/Loader/Loader"
 
 export const EmployeeManagementPage = () => {
     const [addEmployeeActive, setAddEmployee] = useState(false)
@@ -26,6 +27,7 @@ export const EmployeeManagementPage = () => {
     const [seeLogs, setSeeLogs] = useState(null)
     const [updateEmployee, setUpdateEmployee] = useState(false)
     const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     const [employeeList, setEmployeeList] = useState([])
     useEffect(() => {
@@ -41,6 +43,7 @@ export const EmployeeManagementPage = () => {
 
             setEmployeeList(data)
             handleEmployeeSectorStatistics(data)
+            setLoading(false)
         }
 
         handleGetEmployees()
@@ -146,7 +149,7 @@ export const EmployeeManagementPage = () => {
             </div>
             { addEmployeeActive ?
                 <ModalContainer modalTitle="Cadastro de Funcionário" closeFn={toggleState} closeSet={setAddEmployee} isClosing={isModalClosing} confirmBeforeClose={true}>
-                    <AddEmployeeModal employeeList={employeeList} setEmployeeList={setEmployeeList} handleEmployeeSectorStatistics={handleEmployeeSectorStatistics} />
+                    <AddEmployeeModal employeeList={employeeList} setEmployeeList={setEmployeeList} handleEmployeeSectorStatistics={handleEmployeeSectorStatistics} setLoading={setLoading} />
                 </ModalContainer> : null
             }
             { selectedEmployeeId ?
@@ -171,6 +174,9 @@ export const EmployeeManagementPage = () => {
                 <ModalContainer modalTitle="Adicionar atestado" closeFn={toggleState} closeSet={setAddingLicense} isClosing={isModalClosing} closeAnimation={false}>
                     <EmployeeAddLicenseModal employeeId={seeLicense} />
                 </ModalContainer> : null
+            }
+            {
+                loading ? <Loader /> : null
             }
         </>
     )
