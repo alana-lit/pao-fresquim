@@ -3,13 +3,11 @@ import { LicenseCard } from './LicenseCard/LicenseCard'
 
 import './employeeLicensesModal.css'
 
-export const EmployeeLicensesModal = ({ employeeInfo: { employeeId, employeeHash }, addingLicense, openFn }) => {
+export const EmployeeLicensesModal = ({ employeeId, addingLicense, openFn }) => {
     const [employeeLicenses, setEmployeeLicenses] = useState([])
     const [deletingLicense, setDeletingLicense] = useState(false)
 
     useEffect(() => {
-        console.log(employeeId, employeeHash);
-        
         const BASE_URL = import.meta.env.VITE_DB_URL
         const handleGetLicenses = async () => {
             const response = await fetch(`${BASE_URL}/atestado/${employeeId}`, {
